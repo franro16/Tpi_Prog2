@@ -37,7 +37,7 @@ public class Interfaz1 extends JFrame {
 
         setVisible(true);
     }
-
+    //Botones para agregar
     private void agregarBotones() {
         agregar("4tos - 1er combate, Boxeador 1", 70, 70);
         agregar("4tos - 2do combate, Boxeador 2", 70, 135);
@@ -67,7 +67,7 @@ public class Interfaz1 extends JFrame {
         botones.add(boton);
         posiciones.add(new Point(x, y));
     }
-
+    //Posiciones de los Botones
     private void actualizarPosiciones() {
         int panelAncho = fondoPanel.getWidth();
         int panelAlto = fondoPanel.getHeight();
@@ -92,8 +92,9 @@ public class Interfaz1 extends JFrame {
             boton.setFont(boton.getFont().deriveFont((float) (12 * escala)));
         }
     }
-
+    //Metodo para cargar los datos al apretar los boton
     private void cargarDatos(String id) {
+        //El cuadrito de diálogo con las opciones si o no y el nombre del boxeador y su comprobación de entrada correcta
         int opc = JOptionPane.showConfirmDialog(this, "¿Querés ingresar " + id + "?", "Editar", JOptionPane.YES_NO_OPTION);
         if (opc == JOptionPane.YES_OPTION) {
             String nombre = JOptionPane.showInputDialog(this, "Nombre del boxeador:");
@@ -101,7 +102,7 @@ public class Interfaz1 extends JFrame {
                 JOptionPane.showMessageDialog(this, "Nombre inválido.");
                 return;
             }
-
+            //La parte del pais y comprobación
             String pais = JOptionPane.showInputDialog(this, "País:");
             if (pais == null || pais.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "País inválido.");
@@ -113,16 +114,17 @@ public class Interfaz1 extends JFrame {
         }
     }
 
-    // Panel con imagen de fondo
+    // Interfaz con la imagen de fondo
     static class FondoPanel extends JPanel {
         private final Image imagen;
-
+        //Ruteo de la imagen de fondo
         public FondoPanel(String ruta) {
             URL url = getClass().getResource(ruta);
             imagen = (url != null) ? new ImageIcon(url).getImage() : null;
             if (imagen == null) System.err.println("Imagen no encontrada: " + ruta);
         }
 
+        // Metodo para centrar la imagen y que no se corte o bugee cuando se mueva la pestaña
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             if (imagen == null) return;
