@@ -1,20 +1,18 @@
+package ui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Interfaz1 extends JFrame {
 
-    // Si querés usar después, dejalo; si no, sacalo para no warning
     private final HashMap<String, String[]> boxeadores = new HashMap<>();
-
-    private final FondoPanel fondoPanel;
-    private final ArrayList<BotonInfo> botonesInfo = new ArrayList<>();
-
-    private final int imgWidth = 800;
-    private final int imgHeight = 600;
+    private final ArrayList<JButton> botones = new ArrayList<>();
+    private final ArrayList<Point> posiciones = new ArrayList<>();
+    private FondoPanel fondoPanel;
 
     public Interfaz1() {
         setTitle("Torneo de Boxeo");
@@ -27,80 +25,83 @@ public class Interfaz1 extends JFrame {
         fondoPanel = new FondoPanel("/resources/Plantilla Torneo.png");
         fondoPanel.setLayout(null);
 
-        agregarBoton("O1-B1", 20, 20);
-        agregarBoton("O1-B2", 20, 50);
-        agregarBoton("O2-B1", 20, 100);
-        agregarBoton("O2-B2", 20, 130);
-        agregarBoton("O3-B1", 20, 180);
-        agregarBoton("O3-B2", 20, 210);
-        agregarBoton("O4-B1", 20, 260);
-        agregarBoton("O4-B2", 20, 290);
-
-        agregarBoton("C1-B1", 180, 35);
-        agregarBoton("C1-B2", 180, 115);
-        agregarBoton("C2-B1", 180, 195);
-        agregarBoton("C2-B2", 180, 275);
-
-        agregarBoton("S1-B1", 340, 75);
-        agregarBoton("S1-B2", 340, 235);
-
-        agregarBoton("F-B1", 500, 155);
-        agregarBoton("F-B2", 500, 185);
+        agregarBotones();
 
         add(fondoPanel, BorderLayout.CENTER);
 
         fondoPanel.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent ignored) {
-                actualizarPosicionesBotones();
+            public void componentResized(ComponentEvent e) {
+                actualizarPosiciones();
             }
         });
 
         setVisible(true);
     }
 
-    private void agregarBoton(String id, int xOrig, int yOrig) {
-        JButton boton = new JButton("🖊");
-        boton.setToolTipText(id);
-        boton.addActionListener(e -> cargarBoxeador(id));
-        fondoPanel.add(boton);
-        botonesInfo.add(new BotonInfo(boton, xOrig, yOrig));
+    private void agregarBotones() {
+        agregar("4tos - 1er combate, Boxeador 1", 70, 70);
+        agregar("4tos - 2do combate, Boxeador 2", 70, 135);
+        agregar("4tos - 3er combate, Boxeador 1", 70, 213);
+        agregar("4tos - 4to combate, Boxeador 2", 70, 275);
+        agregar("4tos - 5to combate, Boxeador 1", 70, 355);
+        agregar("4tos - 6to combate, Boxeador 2", 70, 418);
+        agregar("4tos - 7to combate, Boxeador 1", 70, 500);
+        agregar("4tos - 8vo combate, Boxeador 2", 70, 560);
+
+        agregar("Semis - 1er Combate, Boxeador 1", 270, 100);
+        agregar("Semis - 2do Combate, Boxeador 2", 270, 245);
+        agregar("Semis - 3er Combate, Boxeador 1", 270, 390);
+        agregar("Semis - 4to Combate, Boxeador 2", 270, 530);
+
+        agregar("Final - 1er Combate, Boxeador 1", 475, 173);
+        agregar("Final - 2do Combate, Boxeador 2", 475, 460);
+
+        agregar("Ganador del Campeonato", 680, 316);
     }
 
-    private void actualizarPosicionesBotones() {
-        double escalaX = (double) fondoPanel.getWidth() / imgWidth;
-        double escalaY = (double) fondoPanel.getHeight() / imgHeight;
+    private void agregar(String texto, int x, int y) {
+        JButton boton = new JButton("+");
+        boton.setToolTipText(texto);
+        boton.addActionListener(e -> cargarDatos(texto));
+        fondoPanel.add(boton);
+        botones.add(boton);
+        posiciones.add(new Point(x, y));
+    }
 
+    private void actualizarPosiciones() {
+        int panelAncho = fondoPanel.getWidth();
+        int panelAlto = fondoPanel.getHeight();
+
+        int baseAncho = 800;
+        int baseAlto = 600;
+
+        double escalaX = (double) panelAncho / baseAncho;
+        double escalaY = (double) panelAlto / baseAlto;
         double escala = Math.min(escalaX, escalaY);
 
-        int imgAnchoEscalado = (int) (imgWidth * escala);
-        int imgAltoEscalado = (int) (imgHeight * escala);
+        int offsetX = (int) ((panelAncho - baseAncho * escala) / 2);
+        int offsetY = (int) ((panelAlto - baseAlto * escala) / 2);
 
-        int offsetX = (fondoPanel.getWidth() - imgAnchoEscalado) / 2;
-        int offsetY = (fondoPanel.getHeight() - imgAltoEscalado) / 2;
+        for (int i = 0; i < botones.size(); i++) {
+            Point p = posiciones.get(i);
+            int x = offsetX + (int) (p.x * escala);
+            int y = offsetY + (int) (p.y * escala);
 
-        for (BotonInfo bi : botonesInfo) {
-            int xEsc = offsetX + (int) (bi.xOrig * escala);
-            int yEsc = offsetY + (int) (bi.yOrig * escala);
-            bi.boton.setBounds(xEsc, yEsc, (int)(50 * escala), (int)(20 * escala));
-            bi.boton.setFont(bi.boton.getFont().deriveFont((float)(12 * escala)));
+            JButton boton = botones.get(i);
+            boton.setBounds(x, y, 50, 30);
+            boton.setFont(boton.getFont().deriveFont((float) (12 * escala)));
         }
     }
 
-    private void cargarBoxeador(String id) {
-        int respuesta = JOptionPane.showConfirmDialog(
-                this,
-                "¿Querés ingresar datos para " + id + "?",
-                "Editar",
-                JOptionPane.YES_NO_OPTION
-        );
-
-        if (respuesta == JOptionPane.YES_OPTION) {
+    private void cargarDatos(String id) {
+        int opc = JOptionPane.showConfirmDialog(this, "¿Querés ingresar " + id + "?", "Editar", JOptionPane.YES_NO_OPTION);
+        if (opc == JOptionPane.YES_OPTION) {
             String nombre = JOptionPane.showInputDialog(this, "Nombre del boxeador:");
             if (nombre == null || nombre.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Nombre inválido.");
                 return;
             }
+
             String pais = JOptionPane.showInputDialog(this, "País:");
             if (pais == null || pais.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "País inválido.");
@@ -112,64 +113,35 @@ public class Interfaz1 extends JFrame {
         }
     }
 
-    private static class BotonInfo {
-        JButton boton;
-        int xOrig, yOrig;
-
-        BotonInfo(JButton boton, int xOrig, int yOrig) {
-            this.boton = boton;
-            this.xOrig = xOrig;
-            this.yOrig = yOrig;
-        }
-    }
-
+    // Panel con imagen de fondo
     static class FondoPanel extends JPanel {
         private final Image imagen;
 
-        public FondoPanel(String resourcePath) {
-            URL url = getClass().getResource(resourcePath);
-            if (url == null) {
-                System.err.println("No se encontró la imagen en la ruta: " + resourcePath);
-                imagen = null;
-            } else {
-                imagen = new ImageIcon(url).getImage();
-            }
-            setBackground(Color.LIGHT_GRAY);
+        public FondoPanel(String ruta) {
+            URL url = getClass().getResource(ruta);
+            imagen = (url != null) ? new ImageIcon(url).getImage() : null;
+            if (imagen == null) System.err.println("Imagen no encontrada: " + ruta);
         }
 
-        @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-
-            if (imagen == null) return;  // no dibuja si no hay imagen
+            if (imagen == null) return;
 
             Graphics2D g2d = (Graphics2D) g.create();
 
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
-                    RenderingHints.VALUE_RENDER_QUALITY);
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
+            int anchoPanel = getWidth();
+            int altoPanel = getHeight();
+            int anchoImg = imagen.getWidth(this);
+            int altoImg = imagen.getHeight(this);
 
-            int panelWidth = getWidth();
-            int panelHeight = getHeight();
+            double escala = Math.min((double) anchoPanel / anchoImg, (double) altoPanel / altoImg);
+            int anchoFinal = (int) (anchoImg * escala);
+            int altoFinal = (int) (altoImg * escala);
 
-            int imgWidth = imagen.getWidth(this);
-            int imgHeight = imagen.getHeight(this);
+            int x = (anchoPanel - anchoFinal) / 2;
+            int y = (altoPanel - altoFinal) / 2;
 
-            double escalaX = (double) panelWidth / imgWidth;
-            double escalaY = (double) panelHeight / imgHeight;
-            double escala = Math.min(escalaX, escalaY);
-
-            int anchoEscalado = (int) (imgWidth * escala);
-            int altoEscalado = (int) (imgHeight * escala);
-
-            int x = (panelWidth - anchoEscalado) / 2;
-            int y = (panelHeight - altoEscalado) / 2;
-
-            g2d.drawImage(imagen, x, y, anchoEscalado, altoEscalado, this);
-
+            g2d.drawImage(imagen, x, y, anchoFinal, altoFinal, this);
             g2d.dispose();
         }
     }
