@@ -1,3 +1,4 @@
+// Siempre se tiene que definir de que package viene el archivo .java si se trabaja con pakackages
 package ui;
 
 import javax.swing.*;
@@ -39,7 +40,7 @@ public class Interfaz1 extends JFrame {
     }
     //Botones para agregar
     private void agregarBotones() {
-        agregar("4tos - 1er combate, Boxeador 1", 70, 70);
+        agregar("4tos - 1er combate, Boxeador 1", 70, 75);
         agregar("4tos - 2do combate, Boxeador 2", 70, 135);
         agregar("4tos - 3er combate, Boxeador 1", 70, 213);
         agregar("4tos - 4to combate, Boxeador 2", 70, 275);
@@ -48,12 +49,12 @@ public class Interfaz1 extends JFrame {
         agregar("4tos - 7to combate, Boxeador 1", 70, 500);
         agregar("4tos - 8vo combate, Boxeador 2", 70, 560);
 
-        agregar("Semis - 1er Combate, Boxeador 1", 270, 100);
-        agregar("Semis - 2do Combate, Boxeador 2", 270, 245);
-        agregar("Semis - 3er Combate, Boxeador 1", 270, 390);
-        agregar("Semis - 4to Combate, Boxeador 2", 270, 530);
+        agregar("Semis - 1er Combate, Boxeador 1", 275, 105);
+        agregar("Semis - 2do Combate, Boxeador 2", 275, 245);
+        agregar("Semis - 3er Combate, Boxeador 1", 275, 390);
+        agregar("Semis - 4to Combate, Boxeador 2", 275, 530);
 
-        agregar("Final - 1er Combate, Boxeador 1", 475, 173);
+        agregar("Final - 1er Combate, Boxeador 1", 475, 175);
         agregar("Final - 2do Combate, Boxeador 2", 475, 460);
 
         agregar("Ganador del Campeonato", 680, 316);
