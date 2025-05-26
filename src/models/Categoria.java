@@ -1,6 +1,6 @@
 package models;
 
-public class Categoria {
+public clas Categoria {
     private String nombre;
     private double pesoMaximo;
     private double pesoMinimo;
