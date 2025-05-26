@@ -1,6 +1,6 @@
 package models;
 
-public clas Boxeador {
+public class Boxeador {
     private String nombre;
     private String apellido;
     private Categoria categoria;
