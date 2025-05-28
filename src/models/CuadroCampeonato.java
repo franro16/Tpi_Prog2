@@ -6,12 +6,13 @@ public class CuadroCampeonato {
     private ArrayList<Combate> octavos;
     private ArrayList<Combate> cuartos;
     private ArrayList<Combate> semiFinales;
-    private Combate final;
+    private Combate finalCombate;
 
     public CuadroCampeonato(ArrayList<Combate> octavos, ArrayList<Combate> cuartos, ArrayList<Combate> semiFinales) {
         this.octavos = octavos;
         this.cuartos = cuartos;
         this.semiFinales = semiFinales;
+        this.finalCombate = finalCombate;
     }
 
     public CuadroCampeonato() {
@@ -39,6 +40,14 @@ public class CuadroCampeonato {
 
     public void setSemiFinales(ArrayList<Combate> semiFinales) {
         this.semiFinales = semiFinales;
+    }
+
+    public Combate getFinalCombate() {
+        return finalCombate;
+    }
+
+    public void setFinalCombate(Combate finalCombate) {
+        this.finalCombate = finalCombate;
     }
 
     @Override
