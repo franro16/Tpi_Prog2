@@ -42,7 +42,4 @@ public class Categoria {
         return peso >= pesoMinimo && peso <= pesoMaximo;
     }
 
-    public boolean estaDentroDelRango(double peso) {
-        return peso >= pesoMinimo && peso <= pesoMaximo;
-    }
 }

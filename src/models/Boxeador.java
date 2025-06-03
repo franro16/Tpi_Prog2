@@ -16,6 +16,9 @@ public class Boxeador {
         this.recorboxeador = recorboxeador;
     }
 
+    public Boxeador(String nombre, String apellido, double peso) {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -63,7 +66,17 @@ public class Boxeador {
     public Boxeador getBoxeador() {
         return this;
     }
-    public boolean estaDentroDelRango(double peso) {
-        return peso >= pesoMin && peso <= pesoMax;
+
+        @Override
+        public String toString() {
+            String nombreCategoria = (categoria != null) ? categoria.getNombre() : "Sin categoría";
+            String generoStr = (genero != null) ? genero.toString() : "Sin género";
+
+            return "Boxeador: " + nombre + " " + apellido +
+                    " | Peso: " + peso + " kg" +
+                    " | Categoría: " + nombreCategoria +
+                    " | Género: " + generoStr;
+        }
     }
-}
+
+
