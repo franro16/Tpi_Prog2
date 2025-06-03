@@ -34,11 +34,10 @@ public class ConsolaView {
     }
 
 
-    public void mostrarDatos (Boxeador dato){
-
+    public void mostrarDatos(Boxeador dato) {
         System.out.println(dato);
-    }
 
+    }
     public void mostrarDatos (ArrayList<Boxeador> dato){
         for (Object o : dato)
             System.out.println(o);

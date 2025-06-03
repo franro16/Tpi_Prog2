@@ -8,12 +8,12 @@ import view.ConsolaView;
 import java.util.ArrayList;
 
 public class BoxeadorController {
-    ConsolaView vista = new ConsolaView();
-    ArrayList<Boxeador> boxeadorList = new ArrayList<>();
-    ArrayList<Categoria> categorias = new ArrayList<>();
+    private ConsolaView vista = new ConsolaView();
+    private ArrayList<Boxeador> boxeadorList = new ArrayList<>();
+    private ArrayList<Categoria> categorias = new ArrayList<>();
 
     public BoxeadorController() {
-        // Cargar solo 4 categorías principales
+
         categorias.add(new Categoria("Peso Mosca", 52.0, 48.0));
         categorias.add(new Categoria("Peso Pluma", 60.0, 52.1));
         categorias.add(new Categoria("Peso Mediano", 75.0, 60.1));
@@ -29,7 +29,7 @@ public class BoxeadorController {
         Boxeador boxeador = new Boxeador(nombre, apellido, peso);
         boxeador.setGenero(genero);
 
-        // esto es para asignar la categoria automaticamente uan vez puesto el peso
+        // esto va a asignar la categotia segun el peso automativamente
         for (Categoria cat : categorias) {
             if (cat.estaDentroDelRango(peso)) {
                 boxeador.setCategoria(cat);
@@ -37,7 +37,6 @@ public class BoxeadorController {
             }
         }
 
-        //aca lo vamos a agregar a la lista
         boxeadorList.add(boxeador);
         vista.mostrarDatos(boxeadorList);
     }

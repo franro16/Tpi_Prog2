@@ -3,22 +3,18 @@ package models;
 public class Boxeador {
     private String nombre;
     private String apellido;
-    private Double peso;
+    private double peso;
     private Categoria categoria;
     private Genero genero;
-    private RecordBoxeador recorboxeador;
 
-    public Boxeador(String nombre, String apellido, Categoria categoria, Genero genero, RecordBoxeador recorboxeador) {
+    // Constructor
+    public Boxeador(String nombre, String apellido, double peso) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.categoria = categoria;
-        this.genero = genero;
-        this.recorboxeador = recorboxeador;
+        this.peso = peso;
     }
 
-    public Boxeador(String nombre, String apellido, double peso) {
-    }
-
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -33,6 +29,14 @@ public class Boxeador {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public Categoria getCategoria() {
@@ -51,32 +55,15 @@ public class Boxeador {
         this.genero = genero;
     }
 
-    public RecordBoxeador getRecorboxeador() {
-        return recorboxeador;
+    // toString para mostrar datos del boxeador
+    @Override
+    public String toString() {
+        String nombreCategoria = (categoria != null) ? categoria.getNombre() : "Sin categoría";
+        String generoStr = (genero != null) ? genero.toString() : "Sin género";
+
+        return "Boxeador: " + nombre + " " + apellido +
+                " | Peso: " + peso + " kg" +
+                " | Categoría: " + nombreCategoria +
+                " | Género: " + generoStr;
     }
-
-    public void setRecorboxeador(RecordBoxeador recorboxeador) {
-        this.recorboxeador = recorboxeador;
-    }
-
-    public void asignarCategoria(Categoria nuevaCategoria) {
-        this.categoria = nuevaCategoria;
-    }
-
-    public Boxeador getBoxeador() {
-        return this;
-    }
-
-        @Override
-        public String toString() {
-            String nombreCategoria = (categoria != null) ? categoria.getNombre() : "Sin categoría";
-            String generoStr = (genero != null) ? genero.toString() : "Sin género";
-
-            return "Boxeador: " + nombre + " " + apellido +
-                    " | Peso: " + peso + " kg" +
-                    " | Categoría: " + nombreCategoria +
-                    " | Género: " + generoStr;
-        }
-    }
-
-
+}
