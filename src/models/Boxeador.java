@@ -63,7 +63,5 @@ public class Boxeador {
     public Boxeador getBoxeador() {
         return this;
     }
-    public boolean estaDentroDelRango(double peso) {
-        return peso >= pesoMin && peso <= pesoMax;
-    }
+   
 }
