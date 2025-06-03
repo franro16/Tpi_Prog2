@@ -26,4 +26,11 @@ public class RecordBoxeador {
     public String verRecord() {
         return "Victorias: " + victorias + ", Derrotas: " + derrotas + ", Empates: " + empates;
     }
+    public void agregarVictoria() {
+        victorias++;
+    }
+
+    public void agregarDerrota() {
+        derrotas++;
+    }
 }
