@@ -100,5 +100,4 @@ public class Combate {
         return genero == Genero.MASCULINO;
     }
 
-
 }
