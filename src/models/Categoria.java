@@ -4,13 +4,11 @@ public class Categoria {
     private String nombre;
     private double pesoMaximo;
     private double pesoMinimo;
-    private String verCategoria;
 
-    public Categoria(String nombre, double pesoMaximo, double pesoMinimo, String verCategoria) {
+    public Categoria(String nombre, double pesoMaximo, double pesoMinimo) {
         this.nombre = nombre;
         this.pesoMaximo = pesoMaximo;
         this.pesoMinimo = pesoMinimo;
-        this.verCategoria= verCategoria;
     }
 
     public double getPesoMinimo() {
@@ -37,16 +35,11 @@ public class Categoria {
         this.nombre = nombre;
     }
 
-    public String getVerCategoria() {
-        return verCategoria;
-    }
-
-    public void setVerCategoria(String verCategoria) {
-        this.verCategoria = verCategoria;
-    }
-
     public String verCategoria() {
         return "Categoría: " + nombre + " | Peso mínimo: " + pesoMinimo + "kg | Peso máximo: " + pesoMaximo + "kg";
     }
 
+    public boolean estaDentroDelRango(double peso) {
+        return peso >= pesoMinimo && peso <= pesoMaximo;
+    }
 }
