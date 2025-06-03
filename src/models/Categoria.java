@@ -48,5 +48,8 @@ public class Categoria {
     public String verCategoria() {
         return "Categoría: " + nombre + " | Peso mínimo: " + pesoMinimo + "kg | Peso máximo: " + pesoMaximo + "kg";
     }
+     public boolean estaDentroDelRango(double peso) {
+        return peso >= pesoMinimo && peso <= pesoMaximo;
+    }
 
 }
