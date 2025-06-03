@@ -91,4 +91,14 @@ public class Combate {
                 ", rounds=" + rounds +
                 '}';
     }
+
+    public boolean isFemenino(){
+        return genero == Genero.FEMENINO;
+    }
+
+    public boolean isMasculino(){
+        return genero == Genero.MASCULINO;
+    }
+
+
 }
