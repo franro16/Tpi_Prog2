@@ -3,6 +3,7 @@ package models;
 public class Boxeador {
     private String nombre;
     private String apellido;
+    private Double peso;
     private Categoria categoria;
     private Genero genero;
     private RecordBoxeador recorboxeador;
