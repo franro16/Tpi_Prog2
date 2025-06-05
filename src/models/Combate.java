@@ -21,7 +21,11 @@ public class Combate {
         this.resultado = resultado;
         this.rounds = rounds;
     }
-//metodos
+
+    public Combate() {
+    }
+
+    //metodos
 //get and set
     public Boxeador getBoxeador1() {
         return boxeador1;
