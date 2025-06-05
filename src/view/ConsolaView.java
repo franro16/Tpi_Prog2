@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsolaView {
-    Scanner sc = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public void mostrarMenu() {
         System.out.println("\n=== Campeonatos de Boxeo ===");
@@ -15,6 +15,39 @@ public class ConsolaView {
         System.out.println("2. Ingresar boxeadores");
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
+    }
+
+    public int pedirOpcion() {
+        while (true) {
+            try {
+                int opcion = Integer.parseInt(scanner.nextLine());
+                return opcion;
+            } catch (NumberFormatException e) {
+                System.out.print("Opción inválida. Intente de nuevo: ");
+            }
+        }
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
+
+
+    public String pedirString(String mensaje) {
+        System.out.print(mensaje + " ");
+        return scanner.nextLine();
+    }
+
+    public double pedirDouble(String mensaje) {
+        while (true) {
+            System.out.print(mensaje + " ");
+            try {
+                double valor = Double.parseDouble(scanner.nextLine());
+                return valor;
+            } catch (NumberFormatException e) {
+                System.out.println("Número inválido. Intente de nuevo.");
+            }
+        }
     }
 
     public String pedirApellido(){
