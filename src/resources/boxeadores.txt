@@ -1,0 +1,17 @@
+Ana,Martinez,51,Mosca,FEMENINO
+Lucía,Perez,50.5,Mosca,FEMENINO
+Carla,Ruiz,49,Mosca,FEMENINO
+Julieta,Gómez,52,Mosca,FEMENINO
+Laura,Benitez,48.7,Mosca,FEMENINO
+Mariana,Castro,50,Mosca,FEMENINO
+Camila,Ramirez,51.3,Mosca,FEMENINO
+Valentina,Suarez,50.2,Mosca,FEMENINO
+Romina,Ferreyra,49.8,Mosca,FEMENINO
+Sofía,Navarro,51.9,Mosca,FEMENINO
+Paula,Mendez,48.5,Mosca,FEMENINO
+Florencia,Cabrera,50.1,Mosca,FEMENINO
+Rocío,Torres,49.4,Mosca,FEMENINO
+Milagros,Lopez,51.5,Mosca,FEMENINO
+Daniela,Vega,50.7,Mosca,FEMENINO
+vale,ledesma,50.0,Mosca,FEMENINO
+brisa,gimenez,54.0,Gallo,FEMENINO
