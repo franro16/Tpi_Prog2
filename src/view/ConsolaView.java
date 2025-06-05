@@ -50,6 +50,19 @@ public class ConsolaView {
         }
     }
 
+    public void mostrarGanadorRound(int numeroRound, String nombreGanador) {
+        System.out.println("Ganador del round " + numeroRound + ": " + nombreGanador);
+    }
+
+    public void mostrarGanadorCombate(String nombreGanador) {
+        System.out.println("Ganador del combate: " + nombreGanador);
+    }
+
+    public void mostrarGanadorCampeonato(String categoria, String genero, String nombreGanador) {
+        System.out.println("\n*** CAMPEÓN DE " + categoria + " " + genero + ": " + nombreGanador + " ***");
+    }
+
+
     public String pedirApellido(){
         System.out.println("ingresasr apellido: ");
         return sc.next();
