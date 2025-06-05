@@ -8,6 +8,15 @@ import java.util.Scanner;
 
 public class ConsolaView {
     Scanner sc = new Scanner(System.in);
+
+    public void mostrarMenu() {
+        System.out.println("\n=== Campeonatos de Boxeo ===");
+        System.out.println("1. Iniciar campeonatos");
+        System.out.println("2. Ingresar boxeadores");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opción: ");
+    }
+
     public String pedirApellido(){
         System.out.println("ingresasr apellido: ");
         return sc.next();
@@ -41,10 +50,6 @@ public class ConsolaView {
     public void mostrarDatos (ArrayList<Boxeador> dato){
         for (Object o : dato)
             System.out.println(o);
-    }
-
-    public void mostrarMenu() {
-        System.out.println("0_ Salir \n1_ Registrar");
     }
 
     public int pedirOpcion() {
