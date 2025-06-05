@@ -15,3 +15,4 @@ Milagros,Lopez,51.5,Mosca,FEMENINO
 Daniela,Vega,50.7,Mosca,FEMENINO
 vale,ledesma,50.0,Mosca,FEMENINO
 brisa,gimenez,54.0,Gallo,FEMENINO
+abril,haedo,50.0,Mosca,FEMENINO
