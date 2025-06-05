@@ -1,13 +1,12 @@
 package view;
 
-import models.Boxeador;
-import models.Genero;
+import models.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsolaView {
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
     public void mostrarMenu() {
         System.out.println("\n=== Campeonatos de Boxeo ===");
@@ -20,7 +19,7 @@ public class ConsolaView {
     public int pedirOpcion() {
         while (true) {
             try {
-                int opcion = Integer.parseInt(scanner.nextLine());
+                int opcion = Integer.parseInt(sc.nextLine());
                 return opcion;
             } catch (NumberFormatException e) {
                 System.out.print("Opción inválida. Intente de nuevo: ");
@@ -35,14 +34,14 @@ public class ConsolaView {
 
     public String pedirString(String mensaje) {
         System.out.print(mensaje + " ");
-        return scanner.nextLine();
+        return sc.nextLine();
     }
 
     public double pedirDouble(String mensaje) {
         while (true) {
             System.out.print(mensaje + " ");
             try {
-                double valor = Double.parseDouble(scanner.nextLine());
+                double valor = Double.parseDouble(sc.nextLine());
                 return valor;
             } catch (NumberFormatException e) {
                 System.out.println("Número inválido. Intente de nuevo.");
@@ -98,7 +97,5 @@ public class ConsolaView {
             System.out.println(o);
     }
 
-    public int pedirOpcion() {
-        return sc.nextInt();
-    }
+
 }
