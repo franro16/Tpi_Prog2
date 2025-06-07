@@ -58,7 +58,9 @@ public class ConsolaView {
     }
 
     public void mostrarGanadorCampeonato(String categoria, String genero, String nombreGanador) {
-        System.out.println("\n*** CAMPEÓN DE " + categoria + " " + genero + ": " + nombreGanador + " ***");
+        System.out.println("\n🏆 CAMPEÓN DEL CAMPEONATO 🏆");
+        System.out.println("Categoría: " + categoria + " | Género: " + genero);
+        System.out.println("Ganador: " + nombreGanador + "\n");
     }
 
 

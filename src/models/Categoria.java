@@ -42,4 +42,7 @@ public class Categoria {
         return peso >= pesoMinimo && peso <= pesoMaximo;
     }
 
+
+
+
 }

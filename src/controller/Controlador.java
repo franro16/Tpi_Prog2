@@ -6,14 +6,17 @@ import view.ConsolaView;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class BoxeadorController {
+
+public class Controlador {
     private ConsolaView vista = new ConsolaView();
     private ArrayList<Categoria> categorias;
     private Map<String, Campeonato> campeonatosPorCategoriaGenero;
     private final String RUTA_ARCHIVO = "src/resources/boxeadores.txt";
+    private List<Boxeador> boxeadoresTotales = new ArrayList<>();
 
-    public BoxeadorController() {
+    public Controlador() {
         categorias = definirCategorias();
         campeonatosPorCategoriaGenero = new HashMap<>();
     }
@@ -79,6 +82,7 @@ public class BoxeadorController {
             Boxeador b = new Boxeador(nombre, apellido, peso);
             b.setGenero(genero);
             asignarCategoria(b);
+            boxeadoresTotales.add(b);
 
             if (b.getCategoria() == null) {
                 vista.mostrarMensaje("Peso fuera de rango de categorías definidas.");
@@ -138,6 +142,7 @@ public class BoxeadorController {
                 b.setGenero(genero);
                 asignarCategoria(b);
                 lista.add(b);
+                boxeadoresTotales.add(b);
             }
         } catch (Exception e) {
             vista.mostrarMensaje("Error leyendo archivo: " + e.getMessage());
@@ -145,21 +150,23 @@ public class BoxeadorController {
         return lista;
     }
 
-    private Campeonato crearCampeonato(String categoria, Genero genero, ArrayList<Boxeador> boxeadores) {
+    private Campeonato crearCampeonato(Categoria categoria, Genero genero, ArrayList<Boxeador> boxeadores) {
         Campeonato campeonato = new Campeonato();
         campeonato.setNombreCampeonato(categoria + " " + genero.toString());
         campeonato.setCategorias(new ArrayList<>());
-        campeonato.getCategorias().add(buscarCategoriaPorNombre(categoria));
         campeonato.setFaseActual(FaseTorneo.OCTAVOS);
 
-        Collections.shuffle(boxeadores);
-        ArrayList<Combate> octavos = new ArrayList<>();
 
-        for (int i = 0; i < boxeadores.size() - 1; i += 2) {
+        Collections.shuffle(boxeadores);
+        ArrayList<Boxeador> boxeadoresLimitados = new ArrayList<>(boxeadores.subList(0, 16));
+
+        campeonato.getCategorias().add(categoria);
+
+        ArrayList<Combate> octavos = new ArrayList<>();
+        for (int i = 0; i < boxeadoresLimitados.size(); i += 2) {
             Combate combate = new Combate();
-            combate.setBoxeador1(boxeadores.get(i));
-            combate.setBoxeador2(boxeadores.get(i + 1));
-            combate.setCategoria(buscarCategoriaPorNombre(categoria));
+            combate.setBoxeador1(boxeadoresLimitados.get(i));
+            combate.setBoxeador2(boxeadoresLimitados.get(i + 1));
             combate.setGenero(genero);
             combate.setFase(FaseTorneo.OCTAVOS);
             octavos.add(combate);
@@ -167,6 +174,7 @@ public class BoxeadorController {
         campeonato.setCombates(octavos);
         return campeonato;
     }
+
 
     private Categoria buscarCategoriaPorNombre(String nombre) {
         for (Categoria c : categorias) {
@@ -201,8 +209,8 @@ public class BoxeadorController {
 
         for (String key : boxeadoresPorCatGen.keySet()) {
             ArrayList<Boxeador> lista = boxeadoresPorCatGen.get(key);
-            if (lista.size() < 4) {
-                vista.mostrarMensaje("No hay suficientes boxeadores (mín 4) para campeonato " + key);
+            if (lista.size() < 16) {
+                vista.mostrarMensaje("No hay suficientes boxeadores (mín 16) para campeonato " + key);
                 continue;
             }
 
@@ -210,26 +218,50 @@ public class BoxeadorController {
             String nombreCat = partes[0];
             Genero genero = Genero.valueOf(partes[1]);
 
-            Campeonato campeonato = crearCampeonato(nombreCat, genero, lista);
+            Categoria categoria = buscarCategoriaPorNombre(nombreCat);
+
+            Campeonato campeonato = crearCampeonato(categoria, genero, lista);
             campeonatosPorCategoriaGenero.put(key, campeonato);
-            ejecutarCampeonato(campeonato);
+            ejecutarCampeonato(campeonato, categoria, genero);
         }
     }
 
-    private void ejecutarCampeonato(Campeonato campeonato) {
+    private void ejecutarCampeonato(Campeonato campeonato, Categoria categoria, Genero genero) {
+        List<Boxeador> boxeadoresFiltrados = boxeadoresTotales.stream()
+                .filter(b -> b.getCategoria().equals(categoria) && b.getGenero() == genero)
+                .limit(16)
+                .collect(Collectors.toList());
+
+        if (boxeadoresFiltrados.size() < 16) {
+            System.out.println("No hay suficientes boxeadores (mín 16) para campeonato " + categoria + "-" + genero);
+            return;
+        }
+
+
+        Collections.shuffle(boxeadoresFiltrados);
+        List<Boxeador> boxeadoresCampeonato = boxeadoresFiltrados.subList(0, 16);
         vista.mostrarMensaje("\nIniciando campeonato: " + campeonato.getNombreCampeonato());
         ArrayList<Combate> faseActual = new ArrayList<>(campeonato.getCombates());
 
-        while (faseActual.size() > 1 || campeonato.getFaseActual() != FaseTorneo.FINAL) {
+        while (true) {
             ArrayList<Combate> siguienteFase = new ArrayList<>();
             FaseTorneo fase = campeonato.getFaseActual();
 
+            vista.mostrarMensaje("\nFASE: " + fase);
+
+            int contador = 1;
             for (Combate combate : faseActual) {
+                vista.mostrarMensaje("Combate " + contador + ": " +
+                        combate.getBoxeador1().getNombre() + " " + combate.getBoxeador1().getApellido() +
+                        " vs " +
+                        combate.getBoxeador2().getNombre() + " " + combate.getBoxeador2().getApellido());
+                contador++;
+
                 Combate resultadoCombate = simularCombate(combate);
                 siguienteFase.add(resultadoCombate);
             }
 
-            vista.mostrarMensaje("\nGanadores fase: " + fase);
+            vista.mostrarMensaje("\nGanadores de la fase " + fase + ":");
             for (Combate c : siguienteFase) {
                 Boxeador ganador = c.getResultado().getGanador();
                 vista.mostrarMensaje("Ganador: " + ganador.getNombre() + " " + ganador.getApellido());
@@ -254,6 +286,7 @@ public class BoxeadorController {
             }
         }
     }
+
 
     private Combate simularCombate(Combate combate) {
         Random random = new Random();
@@ -301,37 +334,3 @@ public class BoxeadorController {
         return siguientesCombates;
     }
 }
-//
-//    public void registrarBoxeador() {
-//        String nombre = vista.pedirNombre();
-//        String apellido = vista.pedirApellido();
-//        double peso = vista.pedirPeso();
-//        Genero genero = vista.pedirGenero();
-//
-//        Boxeador boxeador = new Boxeador(nombre, apellido, peso);
-//        boxeador.setGenero(genero);
-//
-//        // esto va a asignar la categotia segun el peso automativamente
-//        for (Categoria cat : categorias) {
-//            if (cat.estaDentroDelRango(peso)) {
-//                boxeador.setCategoria(cat);
-//                break;
-//            }
-//        }
-//
-//        boxeadorList.add(boxeador);
-//        vista.mostrarDatos(boxeadorList);
-//    }
-//
-//    public void iniciar() {
-//        vista.mostrarMenu();
-//        int opcion = vista.pedirOpcion();
-//        while (opcion != 0) {
-//            if (opcion == 1) {
-//                registrarBoxeador();
-//            }
-//            vista.mostrarMenu();
-//            opcion = vista.pedirOpcion();
-//        }
-//    }
-//}
