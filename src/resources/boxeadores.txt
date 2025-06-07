@@ -18,3 +18,4 @@ brisa,gimenez,54.0,Gallo,FEMENINO
 abril,haedo,50.0,Mosca,FEMENINO
 victoria,peretti,49.0,Mosca,FEMENINO
 jose,aguero,57.0,Ligero,MASCULINO
+pedro,lopez,57.0,Ligero,MASCULINO

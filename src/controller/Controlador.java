@@ -99,12 +99,7 @@ public class Controlador {
             }
         }
 
-        if (boxeadores.size() < 4) {
-            vista.mostrarMensaje("No hay suficientes boxeadores para iniciar campeonatos.");
-            return;
-        }
 
-        prepararYEjecutarCampeonatos(boxeadores);
     }
 
     private void guardarBoxeadorEnArchivo(Boxeador b, String ruta) {
@@ -240,7 +235,7 @@ public class Controlador {
 
         Collections.shuffle(boxeadoresFiltrados);
         List<Boxeador> boxeadoresCampeonato = boxeadoresFiltrados.subList(0, 16);
-        vista.mostrarMensaje("\nIniciando campeonato: " + campeonato.getNombreCampeonato());
+        vista.mostrarMensaje("\nIniciando campeonato: " );
         ArrayList<Combate> faseActual = new ArrayList<>(campeonato.getCombates());
 
         while (true) {
