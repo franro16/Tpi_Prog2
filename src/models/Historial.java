@@ -8,7 +8,7 @@ public class Historial {
 //constructor
     public Historial(Boxeador boxeador, ArrayList<Combate> combates) {
         this.boxeador = boxeador;
-        this.combates = combates;
+        this.combates = new ArrayList<>();
     }
 //get and set
     public Boxeador getBoxeador() {
@@ -26,7 +26,8 @@ public class Historial {
     public void setCombates(ArrayList<Combate> combates) {
         this.combates = combates;
     }
-//toString
+
+    //toString
     @Override
     public String toString() {
         return "Historial{" +
@@ -34,5 +35,9 @@ public class Historial {
                 ", combates=" + combates +
                 '}';
     }
-}
 
+    public void agregarCombate(Combate combate){
+        combates.add(combate);
+    }
+
+}
