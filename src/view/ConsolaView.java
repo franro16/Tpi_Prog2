@@ -12,6 +12,7 @@ public class ConsolaView {
         System.out.println("\n=== Campeonatos de Boxeo ===");
         System.out.println("1. Iniciar campeonatos");
         System.out.println("2. Ingresar boxeadores");
+        System.out.println("3. Listado de boxeadores por categoría y género");
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
     }

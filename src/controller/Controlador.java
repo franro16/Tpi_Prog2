@@ -44,6 +44,9 @@ public class Controlador {
                 case 2:
                     iniciarDesdeConsola();
                     break;
+                case 3:
+                    mostrarBoxeadoresPorCategoriaYGenero();
+                    break;
                 case 0:
                     vista.mostrarMensaje("Saliendo...");
                     break;
@@ -328,4 +331,10 @@ public class Controlador {
         }
         return siguientesCombates;
     }
+    private void mostrarBoxeadoresPorCategoriaYGenero() {
+
+    }
+
+
+
 }
