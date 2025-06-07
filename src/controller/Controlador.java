@@ -332,6 +332,13 @@ public class Controlador {
         return siguientesCombates;
     }
     private void mostrarBoxeadoresPorCategoriaYGenero() {
+        Map<String, List<Boxeador>> agrupados = boxeadoresTotales.stream().filter(b -> b.getCategoria() != null && b.getGenero() != null).collect(Collectors.groupingBy(b -> b.getCategoria().getNombre() + " - " + b.getGenero()));
+        for (String key : agrupados.keySet()){
+            vista.mostrarMensaje("\n" + key + ":");
+            for (Boxeador b : agrupados.get(key)){
+                vista.mostrarMensaje("-" + b.getNombre() + "" + b.getApellido() + "(" + b.getPeso() + "kg)");
+            }
+        }
 
     }
 
