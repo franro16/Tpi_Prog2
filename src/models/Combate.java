@@ -104,4 +104,8 @@ public class Combate {
         return genero == Genero.MASCULINO;
     }
 
+    public String resumenCombate(){
+        return fase + ":" + boxeador1.getNombre() + "vs" + boxeador2.getNombre() + resultado.mostrarResultado();
+    }
+
 }

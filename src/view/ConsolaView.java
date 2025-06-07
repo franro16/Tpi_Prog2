@@ -100,5 +100,18 @@ public class ConsolaView {
             System.out.println(o);
     }
 
+    public void mostrarHistorial(Historial historial){
+        System.out.println("Historial del Boxeador " + historial.getBoxeador().getNombre() + ":");
+        if (historial.getCombates().isEmpty()){
+            System.out.println("No tiene combates");
+        }
+        else {
+            for (Combate c : historial.getCombates()){
+                System.out.println(c.resumenCombate());
+
+            }
+        }
+
+    }
 
 }
