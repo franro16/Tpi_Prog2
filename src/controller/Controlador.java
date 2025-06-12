@@ -27,7 +27,8 @@ public class Controlador {
         lista.add(new Categoria("Gallo", 55, 52.01));
         lista.add(new Categoria("Ligero", 60, 55.01));
         lista.add(new Categoria("Mediano", 72, 60.01));
-        lista.add(new Categoria("Superpesado", Double.MAX_VALUE, 90.01));
+        lista.add(new Categoria("Pesado", 100, 72.01));
+        lista.add(new Categoria("Superpesado", Double.MAX_VALUE, 100.01));
         return lista;
     }
 

@@ -20,3 +20,7 @@ victoria,peretti,49.0,Mosca,FEMENINO
 jose,aguero,57.0,Ligero,MASCULINO
 pedro,lopez,57.0,Ligero,MASCULINO
 maria,ferreyra,50.0,Mosca,FEMENINO
+agustin,heredia,50.0,Mosca,MASCULINO
+franco,romero,95.0,Superpesado,FEMENINO
+maxi,tise,90.0,Pesado,MASCULINO
+agus,heredia,150.0,Superpesado,MASCULINO
