@@ -24,3 +24,6 @@ agustin,heredia,50.0,Mosca,MASCULINO
 franco,romero,95.0,Superpesado,FEMENINO
 maxi,tise,90.0,Pesado,MASCULINO
 agus,heredia,150.0,Superpesado,MASCULINO
+vale,ledesma,45.0,Mosca,FEMENINO
+vale,ledesma,60.0,Ligero,FEMENINO
+federica,loéz,50.0,Mosca,FEMENINO
