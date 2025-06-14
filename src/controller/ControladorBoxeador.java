@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
         this.vista = vista;
         categorias = definirCategorias();
     }
-    //Definicion de liites de peso para cada categoria de cada boxeador
+    //Definicion de limites de peso para cada categoria de cada boxeador
     private ArrayList<Categoria> definirCategorias() {
         ArrayList<Categoria> lista = new ArrayList<>();
         lista.add(new Categoria("Mosca", 52, 0));
