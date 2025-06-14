@@ -5,7 +5,7 @@ public class Round {
     private int duracionSegundos;
     private Boxeador ganador;
 //constructor
-    public Round(int numero, int duracionSegundos, Boxeador ganador) {
+    public Round(int numero, Boxeador ganador) {
         this.numero = numero;
         this.duracionSegundos = duracionSegundos;
         this.ganador = ganador;

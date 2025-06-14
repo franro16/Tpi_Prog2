@@ -9,11 +9,12 @@ public class Boxeador {
     private Categoria categoria;
     private Genero genero;
     private Historial historial;
-
+    private FaseTorneo faseEliminacion;
     private int victorias =0;
     private int derrotas = 0;
     private int empates = 0;
     private int victoriasKO =0;
+
 
     // Constructor
     public Boxeador(String nombre, String apellido, double peso) {
@@ -21,6 +22,7 @@ public class Boxeador {
         this.apellido = apellido;
         this.peso = peso;
         this.historial = new Historial(this);
+        this.faseEliminacion = null;
     }
 
     public Historial getHistorial() {
@@ -29,6 +31,13 @@ public class Boxeador {
 
     // Getters y Setters
 
+    public FaseTorneo getFaseEliminacion() {
+        return faseEliminacion;
+    }
+
+    public void setFaseEliminacion(FaseTorneo faseEliminacion) {
+        this.faseEliminacion = faseEliminacion;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -109,6 +118,7 @@ public class Boxeador {
     public String toString() {
         String nombreCategoria = (categoria != null) ? categoria.getNombre() : "Sin categoría";
         String generoStr = (genero != null) ? genero.toString() : "Sin género";
+        String faseElimStr = (faseEliminacion != null) ? faseEliminacion.toString() : "Campeón / En torneo";
 
         return "Boxeador: " + nombre + " " + apellido +
                 " | Peso: " + peso + " kg" +
@@ -117,6 +127,7 @@ public class Boxeador {
                 " | Victorias: " + victorias +
                 " | Derrotas: " + derrotas +
                 " | Empates: " + empates +
-                " | Victorias KO: " + victoriasKO;
+                " | Victorias KO: " + victoriasKO +
+                " | Eliminado en: " + faseElimStr;
     }
 }

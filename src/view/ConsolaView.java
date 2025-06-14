@@ -111,6 +111,9 @@ public class ConsolaView {
 
             }
         }
+        if (historial.getFaseEliminado() != null) {
+            System.out.println("Eliminado en fase: " + historial.getFaseEliminado());
+        }
 
     }
 

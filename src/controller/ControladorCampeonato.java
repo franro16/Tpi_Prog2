@@ -6,6 +6,8 @@ import view.*;
 import models.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import models.FaseTorneo;
+
 
 // Clase principal encargada de organizar y ejecutar campeonatos de boxeadores
 public class ControladorCampeonato {
@@ -65,39 +67,59 @@ public class ControladorCampeonato {
         }
     }
 
-    //Metodo que ejecuta el campeonato por eliminación directa
     private Boxeador ejecutarEliminatoria(List<Boxeador> participantes) {
         List<Boxeador> ronda = new ArrayList<>(participantes);
         int numCombate = 1;
 
-        // Mientras haya más de un boxeador, se sigue compitiendo
         while (ronda.size() > 1) {
-            String fase = "";
-            // Determina el nombre de la fase según la cantidad de participantes restantes
+            FaseTorneo fase = null;
             switch (ronda.size()) {
-                case 16: fase = "Octavos de Final"; break;
-                case 8: fase = "Cuartos de Final"; break;
-                case 4: fase = "Semifinales"; break;
-                case 2: fase = "Final"; break;
+                case 16:
+                    fase = FaseTorneo.OCTAVOS;
+                    break;
+                case 8:
+                    fase = FaseTorneo.CUARTOS;
+                    break;
+                case 4:
+                    fase = FaseTorneo.SEMIFINAL;
+                    break;
+                case 2:
+                    fase = FaseTorneo.FINAL;
+                    break;
+                default:
+                    fase = null;
+                    break; // Por si acaso
             }
-            vista.mostrarMensaje("\n== " + fase + " ==");
+
+            // Mostrar mensaje con el nombre amigable de la fase
+            if (fase != null) {
+                vista.mostrarMensaje("\n== " + fase.nombreMostrar() + " ==");
+            } else {
+                vista.mostrarMensaje("\n== Fase desconocida ==");
+            }
 
             List<Boxeador> ganadores = new ArrayList<>();
-            // Realiza los combates por pares (b1 vs b2)
             for (int i = 0; i < ronda.size(); i += 2) {
                 vista.mostrarMensaje("\nCombate " + numCombate);
                 Boxeador b1 = ronda.get(i);
                 Boxeador b2 = ronda.get(i + 1);
-                // Simula el combate y guarda al ganador
-                Boxeador ganador = controladorCombate.simularCombate(b1, b2);
+                Genero genero = b1.getGenero();
+                Categoria categoria = b1.getCategoria();
+
+                // Usamos la fase correcta para simular el combate
+                Boxeador ganador = controladorCombate.simularCombate(b1, b2, genero, categoria, fase);
                 ganadores.add(ganador);
                 numCombate++;
             }
-            // Los ganadores pasan a la siguiente ronda
             ronda = ganadores;
         }
 
-        // Cuando queda un solo boxeador, es el campeón
+        vista.mostrarMensaje("\n=== Historial de combates ===");
+        for (Boxeador b : participantes) {
+            vista.mostrarMensaje("\n" + b.getNombre() + " " + b.getApellido());
+            b.getHistorial().mostrarHistorial();
+        }
         return ronda.get(0);
+
     }
 }
