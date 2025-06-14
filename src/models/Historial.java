@@ -5,41 +5,38 @@ import java.util.ArrayList;
 public class Historial {
     private Boxeador boxeador;
     private ArrayList<Combate> combates;
-//constructor
-    public Historial(Boxeador boxeador, ArrayList<Combate> combates) {
+
+    public Historial(Boxeador boxeador) {
         this.boxeador = boxeador;
         this.combates = new ArrayList<>();
     }
-//get and set
+
     public Boxeador getBoxeador() {
         return boxeador;
-    }
-
-    public void setBoxeador(Boxeador boxeador) {
-        this.boxeador = boxeador;
     }
 
     public ArrayList<Combate> getCombates() {
         return combates;
     }
 
-    public void setCombates(ArrayList<Combate> combates) {
-        this.combates = combates;
-    }
-
-    //toString
-    @Override
-    public String toString() {
-        return "Historial{" +
-                "boxeador=" + boxeador +
-                ", combates=" + combates +
-                '}';
-    }
-
-    public void agregarCombate(Combate combate){
+    public void agregarCombate(Combate combate) {
         combates.add(combate);
     }
 
+    // Métodos para actualizar estadísticas según resultado
+    public void registrarVictoria(boolean porKO) {
+        boxeador.incrementarVictorias();
+        if (porKO) {
+            boxeador.incrementarVictoriasKO();
+        }
+    }
 
+    public void registrarDerrota() {
+        boxeador.incrementarDerrotas();
+    }
 
+    public void registrarEmpate() {
+        boxeador.incrementarEmpates();
+    }
 }
+
