@@ -5,7 +5,9 @@ import models.*;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
-public class ControladorBoxeador {
+
+    //Definiciones generales y ruta del archivo de carga boxeadores
+    public class ControladorBoxeador {
     private ConsolaView vista;
     private final String RUTA_ARCHIVO = "src/resources/boxeadores.txt";
     private List<Boxeador> boxeadoresTotales = new ArrayList<>();
@@ -15,7 +17,7 @@ public class ControladorBoxeador {
         this.vista = vista;
         categorias = definirCategorias();
     }
-
+    //Definicion de limites de peso para cada categoria de cada boxeador
     private ArrayList<Categoria> definirCategorias() {
         ArrayList<Categoria> lista = new ArrayList<>();
         lista.add(new Categoria("Mosca", 52, 0));
@@ -26,7 +28,7 @@ public class ControladorBoxeador {
         lista.add(new Categoria("Superpesado", Double.MAX_VALUE, 100.01));
         return lista;
     }
-
+    //Metodo iniciar vista consola para la carga manual de un boxeador y asignacion de los valores ingresados a su respectivo lugar
     public void iniciarDesdeConsola() {
         vista.mostrarMensaje("Ingrese boxeadores.");
         ArrayList<Boxeador> boxeadores = cargarBoxeadoresDesdeArchivo(RUTA_ARCHIVO);
@@ -64,7 +66,7 @@ public class ControladorBoxeador {
             }
         }
     }
-
+    //Metodo guardar boxeador en el .txt
     private void guardarBoxeadorEnArchivo(Boxeador b, String ruta) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true))) {
             String linea = b.getNombre() + "," + b.getApellido() + "," + b.getPeso() + "," +
@@ -75,7 +77,7 @@ public class ControladorBoxeador {
             vista.mostrarMensaje("Error guardando boxeador en archivo: " + e.getMessage());
         }
     }
-
+    //Metodo cargar boxeadores del .txt
     public ArrayList<Boxeador> cargarBoxeadoresDesdeArchivo(String nombreArchivo) {
         ArrayList<Boxeador> lista = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -107,7 +109,7 @@ public class ControladorBoxeador {
         }
         return lista;
     }
-
+    //asigna categoria (comprobando peso maximo y minimo) al boxeador ingresado segun peso ingresado
     private void asignarCategoria(Boxeador b) {
         for (Categoria c : categorias) {
             if (c.estaDentroDelRango(b.getPeso())) {
@@ -118,6 +120,7 @@ public class ControladorBoxeador {
         b.setCategoria(null);
     }
 
+    //Metodo mostrar todos los boxeadores cargados con su respectiva categoria y genero
     public void mostrarBoxeadoresPorCategoriaYGenero() {
         Map<String, List<Boxeador>> agrupados = boxeadoresTotales.stream()
                 .filter(b -> b.getCategoria() != null && b.getGenero() != null)
@@ -130,6 +133,7 @@ public class ControladorBoxeador {
             }
         }
     }
+    //Metodo mostrar todos los boxeadores
 
     public List<Boxeador> getBoxeadoresTotales() {
         return boxeadoresTotales;
