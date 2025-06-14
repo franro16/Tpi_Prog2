@@ -6,6 +6,7 @@ public class Boxeador {
     private double peso;
     private Categoria categoria;
     private Genero genero;
+    private Historial historial;
 
     // Constructor
     public Boxeador(String nombre, String apellido, double peso) {
@@ -15,6 +16,15 @@ public class Boxeador {
     }
 
     // Getters y Setters
+
+    public Historial getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
+    }
+
     public String getNombre() {
         return nombre;
     }

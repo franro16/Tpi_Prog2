@@ -1,5 +1,5 @@
 package models;
-
+import models.*;
 import java.util.ArrayList;
 
 public class Historial {
@@ -39,5 +39,7 @@ public class Historial {
     public void agregarCombate(Combate combate){
         combates.add(combate);
     }
+
+
 
 }
