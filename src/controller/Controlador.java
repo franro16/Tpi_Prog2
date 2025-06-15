@@ -41,7 +41,7 @@ public class Controlador {
                     break;
                 case 0:
                     vista.mostrarMensaje("Saliendo...");
-                    break;
+                    return;
                 default:
                     vista.mostrarMensaje("Opción inválida");
             }

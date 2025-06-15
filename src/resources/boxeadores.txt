@@ -14,7 +14,6 @@ Lucas, Ortega, 50, Mosca, Masculino
 Enzo, Barrios, 52, Mosca, Masculino
 Lautaro, Peralta, 51, Mosca, Masculino
 Thiago, Medina, 52, Mosca, Masculino
-Jazmín, Castro, 53, Gallo, Femenino
 Julieta, Ríos, 54, Gallo, Femenino
 Paula, Giménez, 55, Gallo, Femenino
 Carolina, Ibáñez, 53, Gallo, Femenino
