@@ -1,31 +1,16 @@
-Ana,Martinez,51,Mosca,FEMENINO
-Lucía,Perez,50.5,Mosca,FEMENINO
-Carla,Ruiz,49,Mosca,FEMENINO
-Julieta,Gómez,52,Mosca,FEMENINO
-Laura,Benitez,48.7,Mosca,FEMENINO
-Mariana,Castro,50,Mosca,FEMENINO
-Camila,Ramirez,51.3,Mosca,FEMENINO
-Valentina,Suarez,50.2,Mosca,FEMENINO
-Romina,Ferreyra,49.8,Mosca,FEMENINO
-Sofía,Navarro,51.9,Mosca,FEMENINO
-Paula,Mendez,48.5,Mosca,FEMENINO
-Florencia,Cabrera,50.1,Mosca,FEMENINO
-Rocío,Torres,49.4,Mosca,FEMENINO
-Milagros,Lopez,51.5,Mosca,FEMENINO
-Daniela,Vega,50.7,Mosca,FEMENINO
-vale,ledesma,50.0,Mosca,FEMENINO
-brisa,gimenez,54.0,Gallo,FEMENINO
-abril,haedo,50.0,Mosca,FEMENINO
-victoria,peretti,49.0,Mosca,FEMENINO
-jose,aguero,57.0,Ligero,MASCULINO
-pedro,lopez,57.0,Ligero,MASCULINO
-maria,ferreyra,50.0,Mosca,FEMENINO
-agustin,heredia,50.0,Mosca,MASCULINO
-franco,romero,95.0,Superpesado,FEMENINO
-maxi,tise,90.0,Pesado,MASCULINO
-agus,heredia,150.0,Superpesado,MASCULINO
-franco,romero,50.0,Mosca,FEMENINO
-vale,ledesma,45.0,Mosca,FEMENINO
-vale,ledesma,60.0,Ligero,FEMENINO
-federica,loéz,50.0,Mosca,FEMENINO
-franco,romero,51.0,Mosca,FEMENINO
+Martina, Gómez, 50, Mosca, Femenino
+Camila, Duarte, 49, Mosca, Femenino
+Abril, Paredes, 50, Mosca, Femenino
+Luciana, Vega, 48, Mosca, Femenino
+Morena, Sosa, 49, Mosca, Femenino
+Valentina, Ramos, 48, Mosca, Femenino
+Delfina, Acosta, 49, Mosca, Femenino
+Zoe, Quiroga, 50, Mosca, Femenino
+Tomás, Rivas, 51, Mosca, Masculino
+Mateo, Leiva, 52, Mosca, Masculino
+Joaquín, Torres, 52, Mosca, Masculino
+Santiago, Núñez, 51, Mosca, Masculino
+Lucas, Ortega, 50, Mosca, Masculino
+Enzo, Barrios, 52, Mosca, Masculino
+Lautaro, Peralta, 51, Mosca, Masculino
+Thiago, Medina, 52, Mosca, Masculino
