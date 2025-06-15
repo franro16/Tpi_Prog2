@@ -1,31 +1,96 @@
-Ana,Martinez,51,Mosca,FEMENINO
-Lucía,Perez,50.5,Mosca,FEMENINO
-Carla,Ruiz,49,Mosca,FEMENINO
-Julieta,Gómez,52,Mosca,FEMENINO
-Laura,Benitez,48.7,Mosca,FEMENINO
-Mariana,Castro,50,Mosca,FEMENINO
-Camila,Ramirez,51.3,Mosca,FEMENINO
-Valentina,Suarez,50.2,Mosca,FEMENINO
-Romina,Ferreyra,49.8,Mosca,FEMENINO
-Sofía,Navarro,51.9,Mosca,FEMENINO
-Paula,Mendez,48.5,Mosca,FEMENINO
-Florencia,Cabrera,50.1,Mosca,FEMENINO
-Rocío,Torres,49.4,Mosca,FEMENINO
-Milagros,Lopez,51.5,Mosca,FEMENINO
-Daniela,Vega,50.7,Mosca,FEMENINO
-vale,ledesma,50.0,Mosca,FEMENINO
-brisa,gimenez,54.0,Gallo,FEMENINO
-abril,haedo,50.0,Mosca,FEMENINO
-victoria,peretti,49.0,Mosca,FEMENINO
-jose,aguero,57.0,Ligero,MASCULINO
-pedro,lopez,57.0,Ligero,MASCULINO
-maria,ferreyra,50.0,Mosca,FEMENINO
-agustin,heredia,50.0,Mosca,MASCULINO
-franco,romero,95.0,Superpesado,FEMENINO
-maxi,tise,90.0,Pesado,MASCULINO
-agus,heredia,150.0,Superpesado,MASCULINO
-franco,romero,50.0,Mosca,FEMENINO
-vale,ledesma,45.0,Mosca,FEMENINO
-vale,ledesma,60.0,Ligero,FEMENINO
-federica,loéz,50.0,Mosca,FEMENINO
-franco,romero,51.0,Mosca,FEMENINO
+Martina, Gómez, 50, Mosca, Femenino
+Camila, Duarte, 49, Mosca, Femenino
+Abril, Paredes, 50, Mosca, Femenino
+Luciana, Vega, 48, Mosca, Femenino
+Morena, Sosa, 49, Mosca, Femenino
+Valentina, Ramos, 48, Mosca, Femenino
+Delfina, Acosta, 49, Mosca, Femenino
+Zoe, Quiroga, 50, Mosca, Femenino
+Tomás, Rivas, 51, Mosca, Masculino
+Mateo, Leiva, 52, Mosca, Masculino
+Joaquín, Torres, 52, Mosca, Masculino
+Santiago, Núñez, 51, Mosca, Masculino
+Lucas, Ortega, 50, Mosca, Masculino
+Enzo, Barrios, 52, Mosca, Masculino
+Lautaro, Peralta, 51, Mosca, Masculino
+Thiago, Medina, 52, Mosca, Masculino
+Jazmín, Castro, 53, Gallo, Femenino
+Julieta, Ríos, 54, Gallo, Femenino
+Paula, Giménez, 55, Gallo, Femenino
+Carolina, Ibáñez, 53, Gallo, Femenino
+Milena, Bravo, 54, Gallo, Femenino
+Ámbar, Villalba, 55, Gallo, Femenino
+Agustina, Soria, 54, Gallo, Femenino
+Pamela, Mercado, 55, Gallo, Femenino
+Bruno, Pérez, 53, Gallo, Masculino
+Axel, Farías, 55, Gallo, Masculino
+Simón, Díaz, 54, Gallo, Masculino
+Alan, Roldán, 55, Gallo, Masculino
+Andrés, Cabral, 55, Gallo, Masculino
+Benjamín, Ibarra, 53, Gallo, Masculino
+Dylan, Ruiz, 54, Gallo, Masculino
+Iván, Aguirre, 55, Gallo, Masculino
+Sol, Romero, 58, Ligero, Femenino
+Lara, Ayala, 59, Ligero, Femenino
+Melanie, Núñez, 57, Ligero, Femenino
+Daiana, Suárez, 60, Ligero, Femenino
+Antonella, Cabrera, 60, Ligero, Femenino
+Micaela, Vera, 59, Ligero, Femenino
+Rocío, Fernández, 58, Ligero, Femenino
+Celeste, Morales, 60, Ligero, Femenino
+Julián, Herrera, 58, Ligero, Masculino
+Tomás, Giménez, 59, Ligero, Masculino
+Elías, Gutiérrez, 57, Ligero, Masculino
+Nicolás, Ayala, 60, Ligero, Masculino
+Mauricio, Ponce, 60, Ligero, Masculino
+Facundo, Rivas, 58, Ligero, Masculino
+Ezequiel, Ledesma, 59, Ligero, Masculino
+Franco, Sosa, 60, Ligero, Masculino
+Ariana, Suárez, 70, Mediano, Femenino
+Micaela, Varela, 69, Mediano, Femenino
+Celeste, Aguirre, 70, Mediano, Femenino
+Milagros, Roldán, 71, Mediano, Femenino
+Sol, Cordero, 68, Mediano, Femenino
+Lara, Ibáñez, 70, Mediano, Femenino
+Lourdes, Montiel, 69, Mediano, Femenino
+Florencia, Díaz, 70, Mediano, Femenino
+Nicolás, Herrera, 71, Mediano, Masculino
+Julián, Muñoz, 72, Mediano, Masculino
+Facundo, Pinto, 73, Mediano, Masculino
+Rodrigo, Cabrera, 74, Mediano, Masculino
+Juan, Figueroa, 73, Mediano, Masculino
+Alan, Blanco, 72, Mediano, Masculino
+Gastón, Arias, 74, Mediano, Masculino
+Elías, Sánchez, 72, Mediano, Masculino
+Paula, Romero, 86, Pesado, Femenino
+Julieta, Navarro, 85, Pesado, Femenino
+Brenda, Soria, 84, Pesado, Femenino
+Daniela, Correa, 85, Pesado, Femenino
+Carla, Ayala, 86, Pesado, Femenino
+Malena, Paz, 84, Pesado, Femenino
+Daiana, Vera, 85, Pesado, Femenino
+Noelia, Ríos, 86, Pesado, Femenino
+Marcos, Benítez, 89, Pesado, Masculino
+Diego, Luna, 88, Pesado, Masculino
+Franco, Escobar, 90, Pesado, Masculino
+Agustín, Ledesma, 87, Pesado, Masculino
+Kevin, Giménez, 89, Pesado, Masculino
+Ezequiel, Ferreira, 88, Pesado, Masculino
+Cristian, Delgado, 90, Pesado, Masculino
+Ariel, Bustos, 87, Pesado, Masculino
+Carla, Navarro, 100, Superpesado, Femenino
+Vanesa, Aguayo, 98, Superpesado, Femenino
+Belén, Godoy, 99, Superpesado, Femenino
+Jimena, Riquelme, 101, Superpesado, Femenino
+Antonella, Ferreyra, 97, Superpesado, Femenino
+Aldana, Moreno, 102, Superpesado, Femenino
+Magalí, Quiñones, 100, Superpesado, Femenino
+Romina, Barrera, 99, Superpesado, Femenino
+Jonathan, Castaño, 105, Superpesado, Masculino
+Federico, Moyano, 110, Superpesado, Masculino
+Luciano, Vargas, 112, Superpesado, Masculino
+Brian, Moreira, 108, Superpesado, Masculino
+Damián, Medina, 115, Superpesado, Masculino
+Ramiro, Cardozo, 109, Superpesado, Masculino
+Iván, Cabrera, 111, Superpesado, Masculino
+Leandro, Romero, 114, Superpesado, Masculino

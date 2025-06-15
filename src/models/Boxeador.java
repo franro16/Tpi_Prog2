@@ -12,7 +12,7 @@ public class Boxeador {
     private FaseTorneo faseEliminacion;
     private int victorias =0;
     private int derrotas = 0;
-    private int empates = 0;
+
     private int victoriasKO =0;
 
 
@@ -88,9 +88,7 @@ public class Boxeador {
         derrotas++;
     }
 
-    public void incrementarEmpates() {
-        empates++;
-    }
+
 
     public void incrementarVictoriasKO() {
         victoriasKO++;
@@ -104,9 +102,7 @@ public class Boxeador {
         return derrotas;
     }
 
-    public int getEmpates() {
-        return empates;
-    }
+
 
     public int getVictoriasKO() {
         return victoriasKO;
@@ -126,7 +122,7 @@ public class Boxeador {
                 " | Género: " + generoStr +
                 " | Victorias: " + victorias +
                 " | Derrotas: " + derrotas +
-                " | Empates: " + empates +
+
                 " | Victorias KO: " + victoriasKO +
                 " | Eliminado en: " + faseElimStr;
     }

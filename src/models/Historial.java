@@ -37,9 +37,7 @@ public class Historial {
         boxeador.incrementarDerrotas();
     }
 
-    public void registrarEmpate() {
-        boxeador.incrementarEmpates();
-    }
+
     public void setFaseEliminacion(FaseTorneo fase) {
         this.faseEliminacion = fase;
     }
@@ -66,16 +64,13 @@ public class Historial {
                 case GANADOR_BOXEADOR2:
                     resultadoStr = (c.getBoxeador2() == boxeador) ? "Ganó" : "Perdió";
                     break;
-                case EMPATE:
-                    resultadoStr = "Empató";
-                    break;
+
             }
             System.out.println("- " + resultadoStr + " vs " + rival + " | Fase: " + c.getFase().name());
         }
 
         System.out.println("Victorias: " + boxeador.getVictorias() +
                 " | Derrotas: " + boxeador.getDerrotas() +
-                " | Empates: " + boxeador.getEmpates() +
                 " | Victorias KO: " + boxeador.getVictoriasKO());
     }
 

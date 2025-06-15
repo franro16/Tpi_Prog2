@@ -52,8 +52,17 @@ public class ControladorCombate {
             resultado = Resultado.GANADOR_BOXEADOR2;
             fueKO = rand.nextInt(100) < 30;
         } else {
-            resultado = Resultado.EMPATE;
+            // Desempate aleatorio si hay empate
+            if (rand.nextBoolean()) {
+                ganador = b1;
+                resultado = Resultado.GANADOR_BOXEADOR1;
+            } else {
+                ganador = b2;
+                resultado = Resultado.GANADOR_BOXEADOR2;
+            }
+            fueKO = rand.nextInt(100) < 30;
         }
+
 
         vista.mostrarGanadorCombate(ganador != null ? ganador.getNombre() : "Empate");
 
@@ -73,13 +82,10 @@ public class ControladorCombate {
                 b2.getHistorial().registrarVictoria(fueKO);
                 b1.getHistorial().registrarDerrota();
                 break;
-            case EMPATE:
-                b1.getHistorial().registrarEmpate();
-                b2.getHistorial().registrarEmpate();
-                break;
+
 
             // Registrar fase de eliminación al perdedor
-            // EMPATE: Eliminá a ambos
+
 
         }
 
