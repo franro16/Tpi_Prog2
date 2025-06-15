@@ -122,7 +122,6 @@ public class Boxeador {
                 " | Género: " + generoStr +
                 " | Victorias: " + victorias +
                 " | Derrotas: " + derrotas +
-
                 " | Victorias KO: " + victoriasKO +
                 " | Eliminado en: " + faseElimStr;
     }
