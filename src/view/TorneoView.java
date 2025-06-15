@@ -37,8 +37,8 @@ public class TorneoView extends JFrame {
                         375.0 / 768.0,
                         480.0 / 768.0,
                         555.0 / 768.0,
-                        670.0 / 768.0,
-                        725.0 / 768.0
+                        655.0 / 768.0,
+                        735.0 / 768.0
                 };
 
                 double[] ySemis = {
@@ -49,10 +49,10 @@ public class TorneoView extends JFrame {
                         250.0 / 768.0, 610.0 / 768.0
                 };
 
-                double xCuartos = 85.0 / 1366.0;
-                double xSemis = 450.0 / 1366.0;
+                double xCuartos = 80.0 / 1366.0;
+                double xSemis = 440.0 / 1366.0;
                 double xFinal = 800.0 / 1366.0;
-                double xGanador = 1170.0 / 1366.0;
+                double xGanador = 1130.0 / 1366.0;
                 double yGanador = 430.0 / 768.0;
 
                 List<Boxeador> cuartos = torneo.get("Cuartos");

@@ -46,7 +46,7 @@ public class ControladorCampeonato {
 
                 // Mostrar interfaz gráfica
                 SwingUtilities.invokeLater(() -> {
-                    new TorneoView(torneoActual, partes[0], partes[1], ganador.getNombre());
+                    new TorneoView(torneoActual, partes[0], partes[1], ganador.getNombre() + " " + ganador.getApellido());
                 });
             } else {
                 vista.mostrarMensaje("\nNo hay suficientes boxeadores para iniciar el campeonato en " + key + " (se necesitan al menos 8).");
