@@ -18,51 +18,77 @@ public class TorneoView extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+
                 int width = getWidth();
                 int height = getHeight();
 
-                // Fondo
                 ImageIcon icon = new ImageIcon(IMAGE_PATH);
-                if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-                    g.drawImage(icon.getImage(), 0, 0, width, height, this);
-                } else {
-                    g.setColor(Color.WHITE);
-                    g.fillRect(0, 0, width, height);
-                }
+                g.drawImage(icon.getImage(), 0, 0, width, height, this);
 
-                // Configuración de texto
                 g.setColor(Color.BLACK);
                 Font fontNormal = new Font("Arial", Font.BOLD, 16);
                 Font fontGanador = new Font("Arial", Font.BOLD, 24);
                 g.setFont(fontNormal);
 
-                // Cuartos (8 boxeadores)
+                double[] yCuartos = {
+                        120.0 / 768.0,
+                        200.0 / 768.0,
+                        300.0 / 768.0,
+                        375.0 / 768.0,
+                        480.0 / 768.0,
+                        555.0 / 768.0,
+                        670.0 / 768.0,
+                        725.0 / 768.0
+                };
+
+                double[] ySemis = {
+                        160.0 / 768.0, 340.0 / 768.0, 520.0 / 768.0, 700.0 / 768.0
+                };
+
+                double[] yFinal = {
+                        250.0 / 768.0, 610.0 / 768.0
+                };
+
+                double xCuartos = 85.0 / 1366.0;
+                double xSemis = 450.0 / 1366.0;
+                double xFinal = 800.0 / 1366.0;
+                double xGanador = 1170.0 / 1366.0;
+                double yGanador = 430.0 / 768.0;
+
                 List<Boxeador> cuartos = torneo.get("Cuartos");
                 if (cuartos != null) {
                     for (int i = 0; i < cuartos.size(); i++) {
-                        g.drawString(cuartos.get(i).getNombre(), width/10, height/8 + i*(height/12));
+                        int x = (int)(width * xCuartos);
+                        int y = (int)(height * yCuartos[i]);
+                        Boxeador b = cuartos.get(i);
+                        g.drawString(b.getNombre() + " " + b.getApellido(), x, y);
                     }
                 }
 
-                // Semifinal (4 boxeadores)
                 List<Boxeador> semifinal = torneo.get("Semifinal");
                 if (semifinal != null) {
                     for (int i = 0; i < semifinal.size(); i++) {
-                        g.drawString(semifinal.get(i).getNombre(), width/3, height/4 + i*(height/8));
+                        int x = (int)(width * xSemis);
+                        int y = (int)(height * ySemis[i]);
+                        Boxeador b = semifinal.get(i);
+                        g.drawString(b.getNombre() + " " + b.getApellido(), x, y);
                     }
                 }
 
-                // Final (2 boxeadores)
                 List<Boxeador> finalistas = torneo.get("Final");
                 if (finalistas != null && finalistas.size() >= 2) {
-                    g.drawString(finalistas.get(0).getNombre(), width/2 + 100, height/3);
-                    g.drawString(finalistas.get(1).getNombre(), width/2 + 100, height/2);
+                    int x = (int)(width * xFinal);
+                    int y1 = (int)(height * yFinal[0]);
+                    int y2 = (int)(height * yFinal[1]);
+                    Boxeador b1 = finalistas.get(0);
+                    Boxeador b2 = finalistas.get(1);
+                    g.drawString(b1.getNombre() + " " + b1.getApellido(), x, y1);
+                    g.drawString(b2.getNombre() + " " + b2.getApellido(), x, y2);
                 }
 
-                // Ganador
                 g.setColor(Color.RED);
                 g.setFont(fontGanador);
-                g.drawString("GANADOR: " + ganador.toUpperCase(), width/2 - 150, height - 100);
+                g.drawString(ganador.toUpperCase(), (int)(width * xGanador), (int)(height * yGanador));
             }
         };
 
