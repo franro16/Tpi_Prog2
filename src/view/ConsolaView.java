@@ -9,11 +9,11 @@ public class ConsolaView {
     Scanner sc = new Scanner(System.in);
 
     public void mostrarMenu() {
-        System.out.println("\n=== Campeonatos de Boxeo ===");
-        System.out.println("1. Iniciar campeonatos");
-        System.out.println("2. Ingresar boxeadores");
-        System.out.println("3. Listado de boxeadores por categoría y género");
-        System.out.println("0. Salir");
+        System.out.println("\n 🥊🥊Campeonatos de Boxeo 🥊🥊");
+        System.out.println("1. Iniciar campeonatos✔️");
+        System.out.println("2. Ingresar boxeadores📝");
+        System.out.println("3. Listado de boxeadores por categoría y género👨🏽👩🏽");
+        System.out.println("0. Salir❌");
         System.out.print("Seleccione una opción: ");
     }
 
@@ -51,30 +51,45 @@ public class ConsolaView {
     }
 
     public void mostrarGanadorRound(int numeroRound, String nombreGanador) {
-        System.out.println("Ganador del round " + numeroRound + ": " + nombreGanador);
+        System.out.println("Ganador del round: " + numeroRound + ": " + nombreGanador);
     }
 
     public void mostrarGanadorCombate(String nombreGanador) {
-        System.out.println("Ganador del combate: " + nombreGanador);
+        System.out.println("Ganador del combate🎉: " + nombreGanador);
     }
 
     public void mostrarGanadorCampeonato(String categoria, String genero, String nombreGanador) {
-        System.out.println("\n🏆 CAMPEÓN DEL CAMPEONATO 🏆");
-        System.out.println("Categoría: " + categoria + " | Género: " + genero);
-        System.out.println("Ganador: " + nombreGanador + "\n");
+        try {
+            System.out.println();
+            System.out.println("🏆 GANADOR DEL CAMPEONATO 🏆");
+            Thread.sleep(1000);
+
+            System.out.println("Categoría: " + categoria);
+            Thread.sleep(1000);
+
+            System.out.println("Género: " + genero);
+            Thread.sleep(1000);
+
+            System.out.println("Ganador: " + nombreGanador + " 🎉");
+            Thread.sleep(1000);
+
+            System.out.println();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
 
     public String pedirApellido(){
-        System.out.println("ingresasr apellido: ");
+        System.out.println("Ingresar apellido: ");
         return sc.next();
     }
     public String pedirNombre(){
-        System.out.println("ingresar nombre: ");
+        System.out.println("Ingresar nombre: ");
         return sc.next();
     }
     public int pedirPeso(){
-        System.out.println("ingresar peso: ");
+        System.out.println("Ingresar peso: ");
         return sc.nextInt();
     }
     public Genero pedirGenero() {
