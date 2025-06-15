@@ -3,6 +3,7 @@ package view;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsolaView {
@@ -49,7 +50,28 @@ public class ConsolaView {
             }
         }
     }
+    public String seleccionarCampeonato(List<String> opcionesDisponibles) {
+        System.out.println("\n🏆 Campeonatos disponibles:");
+        for (int i = 0; i < opcionesDisponibles.size(); i++) {
+            System.out.println((i + 1) + ". " + opcionesDisponibles.get(i));
+        }
+        System.out.println("0. Volver al menú principal");
 
+        int opcion = -1;
+        while (opcion < 0 || opcion > opcionesDisponibles.size()) {
+            System.out.print("Seleccione el número del campeonato a iniciar (o 0 para volver): ");
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Ingrese un número.");
+            }
+        }
+
+        if (opcion == 0) {
+            return null; // el usuario eligió salir
+        }
+        return opcionesDisponibles.get(opcion - 1);
+    }
     public void mostrarGanadorRound(int numeroRound, String nombreGanador) {
         System.out.println("Ganador del round: " + numeroRound + ": " + nombreGanador);
     }

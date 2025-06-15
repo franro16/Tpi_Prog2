@@ -25,34 +25,44 @@ public class ControladorCampeonato {
                 .filter(b -> b.getCategoria() != null && b.getGenero() != null)
                 .collect(Collectors.groupingBy(b -> b.getCategoria().getNombre() + "-" + b.getGenero()));
 
-        Random random = new Random();
+        List<String> clavesDisponibles = new ArrayList<>(agrupados.keySet());
 
-        for (String key : agrupados.keySet()) {
-            List<Boxeador> lista = agrupados.get(key);
-            if (lista.size() >= 8) {  // Requerimos 8 boxeadores para Cuartos
-                if (lista.size() > 8) {
-                    Collections.shuffle(lista, random);
-                    lista = lista.subList(0, 8);
-                }
+        if (clavesDisponibles.isEmpty()) {
+            vista.mostrarMensaje("\n⚠️ No hay categorías disponibles para iniciar campeonatos.");
+            return;
+        }
 
-                torneoActual.clear();
-                torneoActual.put("Cuartos", new ArrayList<>(lista));
+        String keySeleccionada = vista.seleccionarCampeonato(clavesDisponibles);
 
-                Boxeador ganador = ejecutarEliminatoria(lista);
-                String[] partes = key.split("-");
+        if (keySeleccionada == null) {
+            vista.mostrarMensaje("\n🔙 Volviendo al menú principal...");
+            return;
+        }
 
-                // Mostrar en consola
-                vista.mostrarGanadorCampeonato(partes[0], partes[1], ganador.getNombre());
+        List<Boxeador> lista = agrupados.get(keySeleccionada);
 
-                // Mostrar interfaz gráfica
-                SwingUtilities.invokeLater(() -> {
-                    new TorneoView(torneoActual, partes[0], partes[1], ganador.getNombre() + " " + ganador.getApellido());
-                });
-            } else {
-                vista.mostrarMensaje("\nNo hay suficientes boxeadores para iniciar el campeonato en " + key + " (se necesitan al menos 8).");
-            }
+        if (lista.size() >= 8) {
+            Collections.shuffle(lista, new Random());
+            lista = lista.subList(0, 8);
+
+            torneoActual.clear();
+            torneoActual.put("Cuartos", new ArrayList<>(lista));
+
+            Boxeador ganador = ejecutarEliminatoria(lista);
+            String[] partes = keySeleccionada.split("-");
+
+            vista.mostrarGanadorCampeonato(partes[0], partes[1], ganador.getNombre());
+
+            //el swingUtilities.invokeLater es para asegurarse de que la vista se actualice en el hilo de la interfaz gráfica
+
+            SwingUtilities.invokeLater(() -> {
+                new TorneoView(torneoActual, partes[0], partes[1], ganador.getNombre() + " " + ganador.getApellido());
+            });
+        } else {
+            vista.mostrarMensaje("\n⚠️ No hay suficientes boxeadores para iniciar el campeonato en " + keySeleccionada + " (se necesitan al menos 8).");
         }
     }
+
 
     private Boxeador ejecutarEliminatoria(List<Boxeador> participantes) {
         List<Boxeador> ronda = new ArrayList<>(participantes);
